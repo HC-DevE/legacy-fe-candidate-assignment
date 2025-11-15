@@ -9,8 +9,8 @@
     // See also https://aka.ms/tsconfig/module
     "module": "esnext",
     "target": "esnext",
-    "moduleResolution": "Bundler",
-    "types": ["jest","node"],
+    "moduleResolution": "bundler",
+    // "types": ["jest","node"],
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
