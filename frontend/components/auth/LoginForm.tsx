@@ -51,10 +51,18 @@ export function LoginForm() {
       return;
     }
 
-    setIsLoading(true);
-    await connectWithEmail(email);
-    setIsLoading(false);
-    setShowOtp(true);
+    try {
+      setIsLoading(true);
+      await connectWithEmail(email);
+      setShowOtp(true);
+    } catch (error) {
+      console.error("Email auth error", error);
+      toast.error("Failed to send code", {
+        description: "Please try again later",
+      });
+    } finally {
+      setIsLoading(false);
+    }
 
     toast.success("Code sent!", {
       description: "Check your email for the verification code",
@@ -111,7 +119,6 @@ export function LoginForm() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
-      
       <MainBackground />
 
       {/* Hero Badge */}
@@ -137,7 +144,9 @@ export function LoginForm() {
             </div>
             <div>
               <CardTitle className="text-3xl font-bold bg-linear-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">
-                {showOtp ? "Verify Your Email" : "Welcome to Message Signer & Verifier"}
+                {showOtp
+                  ? "Verify Your Email"
+                  : "Welcome to Message Signer & Verifier"}
               </CardTitle>
               <CardDescription className="text-base mt-2 text-gray-600">
                 {showOtp

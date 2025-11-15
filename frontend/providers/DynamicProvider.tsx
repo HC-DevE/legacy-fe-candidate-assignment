@@ -18,6 +18,7 @@ export function DynamicProvider({ children }: { children: React.ReactNode }) {
             console.log("User logged out");
           },
         },
+        initialAuthenticationMode: 'connect-only',
       }}
     >
       {children}
