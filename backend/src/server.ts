@@ -8,7 +8,8 @@ export function createServer(): express.Application {
   const app = express();
 
   app
-    .use(cors({ origin: config.corsOrigin }))
+    // .use(cors({ origin: config.corsOrigin }))
+    .use(cors({ origin: "*"}))
     .use(express.json({ limit: "64kb" }))
     .use(verifyRouter);
 
