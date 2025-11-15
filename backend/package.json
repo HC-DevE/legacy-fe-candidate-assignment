@@ -2,13 +2,18 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc -p .",
+    "start": "tsx src/index.ts",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:verbose": "jest --verbose"
+    "test:verbose": "jest --verbose",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\""
   },
   "keywords": [],
   "author": "",
